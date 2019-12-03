@@ -1,12 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
+
+
+
+
+
+
+
+
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: '/login.component.html',
+  styleUrls: ['/login.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
   email: string;
@@ -17,6 +26,7 @@ export class LoginComponent implements OnInit {
   constructor(private authServ: AuthenticationService, private router: Router) { }
   
   ngOnInit() {
+    
   }
   
   logar() {
