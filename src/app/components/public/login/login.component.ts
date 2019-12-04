@@ -1,12 +1,12 @@
-import { Component, OnInit,ViewEncapsulation  } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  templateUrl: '/login.component.html',
+  styleUrls: ['/login.component.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(private authServ: AuthenticationService, private router: Router) { }
   
   ngOnInit() {
+    
   }
   
   logar() {
@@ -49,8 +50,9 @@ export class LoginComponent implements OnInit {
               detalhes = erro.message;
               break;
             }
-              //this.mensagem = `Erro ao logar . ${detalhes}`
+              
           }
+          this.mensagem = `${detalhes}`
         });
       } catch (erro){
         this.mensagem = `Erro ao logar. Detalhes ${erro}`
@@ -73,6 +75,6 @@ export class LoginComponent implements OnInit {
         })
       }
     }
-   
+    
 
   }
