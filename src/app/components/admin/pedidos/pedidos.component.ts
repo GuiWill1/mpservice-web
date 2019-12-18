@@ -44,10 +44,27 @@ export class PedidosComponent implements OnInit {
         return
       }
      
-      
-      //this.playAudio()
+      this.pedidosNovos$.forEach(doc => {
+        for(var document of doc){
+          if(document.status==="AGUARDANDO"){
+            //this.playAudio()
+            break
+          }
+        }
+       /* doc.forEach(doc=>{
+          if(doc.status==="AGUARDANDO"){
+            this.playAudio()
+           
+          }
+          
+        })*/
+      });
+     
       
     })
+  }
+  aprovarPedido(){
+
   }
   playAudio(){
     let audio = new Audio();
@@ -55,6 +72,7 @@ export class PedidosComponent implements OnInit {
     audio.load();
     audio.play();
     audio.loop = true;
+    audio.muted = false
     
     Swal.fire({
       title: 'Você tem um pedido!',
@@ -67,7 +85,9 @@ export class PedidosComponent implements OnInit {
       confirmButtonText: 'Aceitar'
     }).then((result) => {
       if (result.value) {
+       audio.muted = true
         audio.pause()
+        
         Swal.fire(
           'Pedido aceito!',
           '',

@@ -1,26 +1,25 @@
 <div  class="container content">
   <section id="tabs" class="project-tab">
-    <div class="container">
+   
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 col-lg-12 col-sm-12">
                 <nav>
                     <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                         <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Pedidos Novos</a>
                         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Em andamento</a>
-                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Project Tab 3</a>
+                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Entrega</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                      <table cellspacing="0" class="table table-hover table-responsive col-centered shopping-cart-wrap">
+                      <table cellspacing="0" class="table table-responsive col-centered shopping-cart-wrap">
                         <thead class="text-muted">
                           <tr>
-                            <th scope="col" width="120">Status</th>
-                            <th scope="col" width="140">Produto</th>
-                            <th scope="col" width="120">Informações</th>
-                            <th scope="col" width="120">Valor</th>
-                            <th scope="col" width="120">Pagamento</th>
-                            <th scope="col" width="200" class="text-right">Ações</th>
+                            <th scope="col" >Status</th>
+                            <th scope="col" >Produto</th>
+                            <th scope="col" >Informações</th>
+                            <th scope="col">Pagamento</th>
+                            <th scope="col" >Ações</th>
                           </tr>
                         </thead>
                         
@@ -30,11 +29,11 @@
                             <td >
                               <div *ngIf="pedido.aprovado" class="badge badge-success text-wrap"
                                 style=" padding: 5px; width: auto; margin-right: 8px; margin-top:8px;">
-                                <span style="font-size: 1.8em;" class="text-uppercased">Aprovado</span>
+                                <span style="font-size: 1.5em;" class="text-uppercased">Aprovado</span>
                               </div>
                               <div *ngIf="!pedido.aprovado" class="badge badge-warning text-wrap"
                                 style=" padding: 5px; width: auto; margin-right: 8px; margin-top:8px;">
-                                <span style="font-size: 1.8em;" class="text-uppercased">Aguardando</span>
+                                <span style="font-size: 1.5em;" class="text-uppercased">Aguardando</span>
                               </div>
                             </td>
                             <td>
@@ -60,21 +59,24 @@
                               <dd>Av. Bruxelas, QD 37 LT 530 Vila Brasilia</dd>
                             </td>
                             <td>
-                              <div class="price-wrap">
-                                <var class="price">R${{pedido.preco.toFixed(2).replace(".",",")}}</var>
+                              <dt>Valor total</dt>
+                              <div class="badge badge-primary text-wrap price-wrap"
+                              style=" padding: 5px; width: auto; margin-right: 8px; margin-bottom:8px;">
+                                <span style="color: #fff;
+                                font-size: 18px;
+                                font-weight: bold;
+                                margin-right: 5px;
+                                display: block;">R${{pedido.preco.toFixed(2).replace(".",",")}}</span>
                   
-                              </div> <!-- price-wrap .// -->
-                            </td>
+                              </div> 
+                              <dt>Pagamento</dt>
+                              <small class="text-muted">Cartão de crédito Visa</small>
+                  
+                              
+                            
                             <td>
-                              <div class="price-wrap">
-                  
-                                <small class="text-muted">Pagamento com Cartão de crédito</small>
-                              </div> <!-- price-wrap .// -->
-                            </td>
-                            <td class="text-right">
-                              <a style="margin-right:5px;" title="" href="" class="btn btn-success" data-toggle="tooltip"
-                                data-original-title="Save to Wishlist"> Aprovar </a>
-                              <a href="" class="btn btn-outline-danger">Cancelar</a>
+                              <button type="button" style="margin-top:5px; margin-right:5px;"  class="btn btn-success"> Aceitar </button>
+                              <button type="button" style="margin-top:5px; " class="btn btn-outline-danger">Recusar</button>
                             </td>
                           </tr>
                   
@@ -83,29 +85,28 @@
                     </div>
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                        
-                          <table cellspacing="0" class="table table-hover table-responsive col-centered shopping-cart-wrap">
+                          <table cellspacing="0" class="table table-responsive col-centered shopping-cart-wrap">
                             <thead class="text-muted">
                               <tr>
-                                <th scope="col" width="120">Status</th>
-                                <th scope="col" width="140">Produto</th>
-                                <th scope="col" width="120">Informações</th>
-                                <th scope="col" width="120">Valor</th>
-                                <th scope="col" width="120">Pagamento</th>
-                                <th scope="col" width="200" class="text-right">Ações</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Produto</th>
+                                <th scope="col" >Informações</th>
+                                <th scope="col" >Pagamento</th>
+                                <th scope="col">Ações</th>
                               </tr>
                             </thead>
                             
-                            <tbody>
+                            <tbody class="tbody">
                               
                               <tr  *ngFor="let pedido of pedidosAndamento$ | async" >
                                 <td >
-                                  <div *ngIf="pedido.aprovado" class="badge badge-success text-wrap"
+                                  <div *ngIf="pedido.aprovado" class="badge badge-info text-wrap"
                                     style=" padding: 5px; width: auto; margin-right: 8px; margin-top:8px;">
-                                    <span style="font-size: 1.8em;" class="text-uppercased">Aprovado</span>
+                                    <span style="font-size: 1.5em;" class="text-uppercased">Em produção</span>
                                   </div>
-                                  <div *ngIf="!pedido.aprovado" class="badge badge-warning text-wrap"
+                                  <div *ngIf="!pedido.aprovado" class="badge badge-danger text-wrap"
                                     style=" padding: 5px; width: auto; margin-right: 8px; margin-top:8px;">
-                                    <span style="font-size: 1.8em;" class="text-uppercased">Aguardando</span>
+                                    <span style="font-size: 1.5em;" class="text-uppercased">Cancelado</span>
                                   </div>
                                 </td>
                                 <td>
@@ -131,21 +132,25 @@
                                   <dd>Av. Bruxelas, QD 37 LT 530 Vila Brasilia</dd>
                                 </td>
                                 <td>
-                                  <div class="price-wrap">
-                                    <var class="price">R${{pedido.preco.toFixed(2).replace(".",",")}}</var>
-                      
-                                  </div> <!-- price-wrap .// -->
+                                  <dt>Valor total</dt>
+                              <div class="badge badge-primary text-wrap price-wrap"
+                              style=" padding: 5px; width: auto; margin-right: 8px; margin-bottom:8px;">
+                                <span style="color: #fff;
+                                font-size: 18px;
+                                font-weight: bold;
+                                margin-right: 5px;
+                                display: block;">R${{pedido.preco.toFixed(2).replace(".",",")}}</span>
+                  
+                              </div> 
+                              <dt>Pagamento</dt>
+                              <small class="text-muted">Cartão de crédito Visa</small>
+                  
+                            
                                 </td>
+                                
                                 <td>
-                                  <div class="price-wrap">
-                      
-                                    <small class="text-muted">Pagamento com Cartão de crédito</small>
-                                  </div> <!-- price-wrap .// -->
-                                </td>
-                                <td class="text-right">
-                                  <a style="margin-right:5px;" title="" href="" class="btn btn-success" data-toggle="tooltip"
-                                    data-original-title="Save to Wishlist"> Aprovar </a>
-                                  <a href="" class="btn btn-outline-danger">Cancelar</a>
+                                  <button style="margin-top:5px; margin-right:5px;"   type="button" class="btn btn-outline-danger">Cancelar</button>
+                                  <button style="margin-top:5px; " type="button" class="btn btn-success">Pronto</button>
                                 </td>
                               </tr>
                       
@@ -187,7 +192,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
 </section>
   <!--<div  class="card">
     <table class="table table-hover table-responsive col-centered shopping-cart-wrap">
