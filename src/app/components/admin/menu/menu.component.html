@@ -1,37 +1,112 @@
+<div>
 
-<nav *ngIf="(user|async)?.uid" class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" routerLink="/admin/painel"><i class="fas fa-tasks"></i>MP Service</a>
+  <nav *ngIf="(user|async)" class="navbar fixed-top navbar-expand-lg navbar-expand  navbar-dark bg-primary">
+    <a class="navbar-brand d-flex justify-content-between " routerLink="/admin/painel">
+
+      <img src="../../../../assets/img/Splash.png" width="30" height="30" alt="">
+
+
+      <span class="d-none d-md-block" style="margin-left: 5px;">MP Service</span>
+
+    </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
       aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+
     <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav mr-auto">
-  
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/admin/painel" href="#">
-            <i class="fas fa-home"></i>Painel</a>
+
+      <ul class="navbar-nav ml-auto ">
+
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+
+            <div *ngIf="lojista$ && status" class="badge badge-success text-wrap"
+              style=" padding: 5px; width: auto; margin-right: 8px; margin-top:8px;">
+              <span style="font-size: 1.8em;" >ABERTO</span>
+            </div>
+            <div *ngIf=" lojista$ && !status" class="badge badge-danger text-wrap"
+              style=" padding: 5px; width: auto; margin-right: 8px; margin-top:8px;">
+              <span style="font-size: 1.8em;" >FECHADO</span>
+            </div>
+          
+
+
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+            <a class="text-bold" style=" margin-left: 8px"><Strong>Horário 19:00 às 23:30</Strong> </a>
+            <a class="dropdown-item "(click)="abrirFecharLoja()">Abrir/Fechar</a>
+          </div>
         </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/admin/funcionario" href="#">
-            <i class="fas fa-user-plus"></i>Funcionários</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+
+            <img [defaultImage]="'https://firebasestorage.googleapis.com/v0/b/meu-pedido-abf01.appspot.com/o/Splash.png?alt=media&token=80d5ad2b-6946-4e10-89bf-a77a17805a26'" [lazyLoad]= "(lojista$ | async)?.imagemPerfil" width="40" height="40" class="rounded-circle">
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+            <a class="dropdown-item" href="#">Ajustes</a>
+            <a class="dropdown-item" href="#">Informações</a>
+            <a class="dropdown-item" href="#" (click)="sair()">Sair</a>
+          </div>
         </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/admin/requisicao" href="#">
-            <i class="fas fa-calendar-week"></i>Requisições</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/admin/departamento" href="#">
-            <i class="fas fa-school"></i> Departamentos</a>
-        </li>
-  
       </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a href="#" (click)="sair()" class="nav-link">SAIR</a>
-        </li>
-      </ul>
+
+
     </div>
-  
-  
+
+  </nav>
+
+  <div *ngIf="(user |async)?.uid" class="sidenav fixed-top" style="z-index: -100;">
+
+
+
+    <div class="row min-vh-100 flex-column flex-md-row ">
+      <aside class="col-12 col-md-2 p-0 bg-dark flex-shrink-1">
+        <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
+
+
+
+          <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+            <li class="nav-item ju" routerLinkActive="active">
+              <a class="nav-link " routerLink="/admin/painel" href="#">
+
+                <i class="pi pi-home " style="font-size: 1.8em"></i>Pedidos</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/admin/funcionario" href="#">
+                <i class="pi pi-user-plus" style="font-size: 1.8em"></i>Entregas</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/admin/funcionario" href="#">
+                <i class="pi pi-user-plus" style="font-size: 1.8em"></i>Vendas</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/admin/funcionario" href="#">
+                <i class="pi pi-user-plus" style="font-size: 1.8em"></i>Vendas</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/admin/funcionario" href="#">
+                <i class="pi pi-user-plus" style="font-size: 1.8em"></i>Vendas</a>
+            </li>
+
+
+          </ul>
+
+
+
+
+
+
+
+
+
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+</div>

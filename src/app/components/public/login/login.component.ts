@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
+import { LojistaService } from './../../../services/lojista.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,8 +15,8 @@ export class LoginComponent implements OnInit {
   senha: string;
   mensagem: string;
   emailEnviado: boolean;
-
-  constructor(private authServ: AuthenticationService, private router: Router) { }
+  admin: boolean;
+  constructor(private authServ: AuthenticationService, private router: Router, private lojistaService:LojistaService ) { }
   
   ngOnInit() {
     
@@ -29,8 +30,20 @@ export class LoginComponent implements OnInit {
         return
       }
       this.authServ.login(this.email, this.senha)
-        .then(() => {
-          this.router.navigate(['/admin/painel'])
+        .then((user) => {
+          var uid = user.user.uid
+          this.lojistaService.validaLojista(uid).subscribe(dados => {
+            if(dados.exists){
+              
+              
+              this.router.navigate(['/admin/pedidos'])
+            }else{
+              this.authServ.logout()
+              
+              Swal.fire('Oops!','Você não tem permissão para acessar esse módulo','error');
+            }
+          })
+          
         }).catch(erro => {
           let detalhes = "";
           switch (erro.code) {

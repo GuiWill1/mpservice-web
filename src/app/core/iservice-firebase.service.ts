@@ -14,7 +14,15 @@ export abstract class ServiceFirebase<T extends Model> implements ICrud<T>{
     }
     get(id:string):Observable<T>{
         let doc = this.ref.doc<T>(id);
+       
         return doc.get().pipe(map(snapshot => this.docToClass(snapshot)));
+        
+    }
+    getListener(id:string):Observable<T>{
+        let doc = this.ref.doc<T>(id);
+     
+        return this.ref.get().pipe(map(snapshot => this.docToClass(snapshot)));
+        
     }
     list(): Observable<T[]>{
         return this.ref.valueChanges()

@@ -13,12 +13,14 @@ import { LoginComponent } from './components/public/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { MenuComponent } from './components/admin/menu/menu.component';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MenuComponent
+    MenuComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,7 @@ import { MenuComponent } from './components/admin/menu/menu.component';
     AngularFirestoreModule,
     AngularFireAuthModule,
     FormsModule,
+    LazyLoadImageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
